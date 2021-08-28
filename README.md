@@ -1,19 +1,19 @@
 # React Rich Text Editor
 
-![Build Status](https://travis-ci.org/sstur/react-rte.svg?branch=master)
+![Build Status](https://travis-ci.org/sstur/react-draft-rte.svg?branch=master)
 
 This is a UI component built completely in React that is meant to be a full-featured textarea replacement similar to [CKEditor][ckeditor], [TinyMCE][tinymce] and other [rich text "WYSIWYG" editors][rte]. It's based on the excellent, open source [Draft.js][draft-js] from Facebook which is performant and production-tested.
 
 ## Demo
 
-Try the editor here: [react-rte.org/demo][react-rte-demo]
+Try the editor here: [react-draft-rte.org/demo][react-draft-rte-demo]
 
-[![Screenshot 1](https://ucassets.blob.core.windows.net/uploads/rte.png)][react-rte-demo]
+[![Screenshot 1](https://ucassets.blob.core.windows.net/uploads/rte.png)][react-draft-rte-demo]
 
 
 ## Getting Started
 
-    $ npm install --save react-rte
+    $ npm install --save react-draft-rte
 
 `RichTextEditor` is the main editor component. It is comprised of the Draft.js `<Editor>`, some UI components (e.g. toolbar) and some helpful abstractions around getting and setting content with HTML/Markdown.
 
@@ -27,7 +27,7 @@ The scripts are transpiled by Babel to ES6. Additionally, at least one of this p
 
 If you are not using Webpack, you can skip this section. Webpack is required for isomorphic/server-side rendering support in a Node.js environment.
 
-`'react-rte'` contains a bundle that is already built (with CSS) using webpack and is not intended to be consumed again by webpack. So, if you are using webpack you must import RichTextEditor from `react-rte/lib/RichTextEditor` in order to get the un-bundled script which webpack can bundle with your app.
+`'react-draft-rte'` contains a bundle that is already built (with CSS) using webpack and is not intended to be consumed again by webpack. So, if you are using webpack you must import RichTextEditor from `react-draft-rte/lib/RichTextEditor` in order to get the un-bundled script which webpack can bundle with your app.
 
 If you are using webpack you must add a css loader or else your webpack build will fail. For example:
 
@@ -47,7 +47,7 @@ This example uses newer JavaScript and JSX. For an example in old JavaScript, [s
 
 ```javascript
 import React, {Component, PropTypes} from 'react';
-import RichTextEditor from 'react-rte';
+import RichTextEditor from 'react-draft-rte';
 
 class MyStatefulEditor extends Component {
   static propTypes = {
@@ -163,7 +163,7 @@ Optimization tip: Try to call `editorValue.toString()` only when you actually ne
 ### Example with ES5 and no JSX
 ```javascript
 var React = require('react');
-var RichTextEditor = require('react-rte');
+var RichTextEditor = require('react-draft-rte');
 
 React.createClass({
   propTypes: {
@@ -247,7 +247,7 @@ This software is [ISC Licensed](/LICENSE).
 [ckeditor]: http://ckeditor.com/
 [draft-js]: https://facebook.github.io/draft-js/
 [immutablejs]: https://facebook.github.io/immutable-js/
-[react-rte-demo]: https://react-rte.org/demo
+[react-draft-rte-demo]: https://react-draft-rte.org/demo
 [rte]: https://www.google.com/search?q=web+based+rich+text+editor
 [serv]: https://www.npmjs.com/package/serv
 [tinymce]: https://www.tinymce.com/

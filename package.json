@@ -1,6 +1,6 @@
 {
-  "name": "react-rte",
-  "version": "0.16.3",
+  "name": "react-draft-rte",
+  "version": "0.0.1",
   "description": "React Rich Text Editor",
   "main": "dist/react-rte.js",
   "files": [
@@ -54,8 +54,8 @@
     "flow-bin": "^0.32.0",
     "mocha": "^3.1.2",
     "raw-loader": "^0.5.1",
-    "react": "16.x.x",
-    "react-dom": "16.x.x",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-test-renderer": "^16.4.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.18.2",
@@ -64,7 +64,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sstur/react-rte.git"
+    "url": "git+https://github.com/zilurrane/react-draft-rte.git"
   },
   "keywords": [
     "reactjs",
@@ -74,72 +74,9 @@
     "richtext",
     "editor"
   ],
-  "author": "sstur@me.com",
-  "contributors": [
-    {
-      "name": "Adam J. McIntyre",
-      "url": "https://github.com/amcintyre-cs"
-    },
-    {
-      "name": "André Schmidt",
-      "url": "https://github.com/andschdk"
-    },
-    {
-      "name": "Ben Herila",
-      "url": "https://github.com/bherila"
-    },
-    {
-      "name": "Harris Brakmic",
-      "url": "https://github.com/brakmic"
-    },
-    {
-      "name": "Forbes Lindesay",
-      "url": "https://github.com/ForbesLindesay"
-    },
-    {
-      "name": "Kristopher Craw",
-      "url": "https://github.com/KCraw"
-    },
-    {
-      "name": "Rory Hunter",
-      "url": "https://github.com/pugnascotia"
-    },
-    {
-      "name": "Ralph Schindler",
-      "url": "https://github.com/ralphschindler"
-    },
-    {
-      "name": "RaoHai",
-      "url": "https://github.com/RaoHai"
-    },
-    {
-      "name": "Jordan Kohl",
-      "url": "https://github.com/simpixelated"
-    },
-    {
-      "name": "Steffen Kolmer",
-      "url": "https://github.com/skolmer"
-    },
-    {
-      "name": "Simon Sturmer",
-      "url": "https://github.com/sstur"
-    },
-    {
-      "name": "Waldir Pimenta",
-      "url": "https://github.com/waldyrious"
-    },
-    {
-      "name": "Zach Silveira",
-      "url": "https://github.com/zackify"
-    },
-    {
-      "name": "Hyunyoung Cho",
-      "url": "https://github.com/ZeroCho"
-    }
-  ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sstur/react-rte/issues"
+    "url": "https://github.com/zilurrane/react-draft-rte/issues"
   },
-  "homepage": "https://github.com/sstur/react-rte#readme"
+  "homepage": "https://github.com/zilurrane/react-draft-rte#readme"
 }
