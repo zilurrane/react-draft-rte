@@ -273,6 +273,7 @@ export default class EditorToolbar extends Component {
           showPopover={this.state.showImageInput}
           onTogglePopover={this._toggleShowImageInput}
           onSubmit={this._setImage}
+          options={{ altValue: true }}
         />
       </ButtonGroup>
     );
@@ -363,11 +364,11 @@ export default class EditorToolbar extends Component {
     this.setState({showImageInput: !isShowing});
   }
 
-  _setImage(src: string) {
+  _setImage(src: string, _checkOptions: {[key: string]: boolean}, { altValue }: Object) {
     let {editorState} = this.props;
     let contentState = editorState.getCurrentContent();
     let selection = editorState.getSelection();
-    contentState = contentState.createEntity(ENTITY_TYPE.IMAGE, 'IMMUTABLE', {src});
+    contentState = contentState.createEntity(ENTITY_TYPE.IMAGE, 'IMMUTABLE', {src, alt: altValue });
     let entityKey = contentState.getLastCreatedEntityKey();
     let newContentState = Modifier.insertText(contentState, selection, ' ', null, entityKey);
     this.setState({showImageInput: false});

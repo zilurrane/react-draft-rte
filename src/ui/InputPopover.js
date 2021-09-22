@@ -1,5 +1,5 @@
 /* @flow */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import IconButton from './IconButton';
 import ButtonGroup from './ButtonGroup';
@@ -18,8 +18,9 @@ type Props = {
   checkOptions?: {
     [key: string]: { label: string, defaultValue: boolean };
   };
+  options?: Object;
   onCancel: () => any;
-  onSubmit: (value: string, checkOptionValues: CheckOptionValues) => any;
+  onSubmit: (value: string, checkOptionValues: CheckOptionValues, options: Object) => any;
 };
 
 type State = {
@@ -30,15 +31,16 @@ export default class InputPopover extends Component {
   props: Props;
   state: State;
   _inputRef: ?Object;
+  _altRef: ?Object;
 
   constructor() {
     super(...arguments);
     autobind(this);
-    let {checkOptions} = this.props;
+    let { checkOptions } = this.props;
     let checkOptionValues: CheckOptionValues = {};
     if (checkOptions) {
       for (let key of Object.keys(checkOptions)) {
-        let {defaultValue} = checkOptions[key];
+        let { defaultValue } = checkOptions[key];
         checkOptionValues[key] = defaultValue;
       }
     }
@@ -61,19 +63,31 @@ export default class InputPopover extends Component {
   }
 
   render() {
-    let {props} = this;
+    let { props } = this;
     let className = cx(props.className, styles.root);
     return (
       <div className={className}>
         <div className={styles.inner}>
-          <input
-            ref={this._setInputRef}
-            defaultValue={props.defaultValue}
-            type="text"
-            placeholder="https://example.com/"
-            className={styles.input}
-            onKeyPress={this._onInputKeyPress}
-          />
+          <div>
+            <input
+              ref={this._setInputRef}
+              defaultValue={props.defaultValue}
+              type="text"
+              placeholder="https://example.com/"
+              className={styles.input}
+              onKeyPress={this._onInputKeyPress}
+            />
+           {
+           props.options && props.options.altValue && <input
+              ref={this._setAltRef}
+              defaultValue={props.defaultValue}
+              type="text"
+              placeholder="Image Alternative Text"
+              className={styles.input}
+              onKeyPress={this._onInputKeyPress}
+            />
+            }
+          </div>
           <ButtonGroup className={styles.buttonGroup}>
             <IconButton
               label="Cancel"
@@ -96,7 +110,7 @@ export default class InputPopover extends Component {
     if (!this.props.checkOptions) {
       return null;
     }
-    let {checkOptions} = this.props;
+    let { checkOptions } = this.props;
     return Object.keys(checkOptions).map((key) => {
       let label = checkOptions && checkOptions[key] ? checkOptions[key].label : '';
       return (
@@ -118,10 +132,14 @@ export default class InputPopover extends Component {
     this._inputRef = inputElement;
   }
 
+  _setAltRef(inputElement: Object) {
+    this._altRef = inputElement;
+  }
+
   _onCheckOptionPress(key: string) {
-    let {checkOptionValues} = this.state;
+    let { checkOptionValues } = this.state;
     let oldValue = Boolean(checkOptionValues[key]);
-    let newCheckOptionValues = {...checkOptionValues, [key]: !oldValue};
+    let newCheckOptionValues = { ...checkOptionValues, [key]: !oldValue };
     this.setState({
       checkOptionValues: newCheckOptionValues,
     });
@@ -137,7 +155,8 @@ export default class InputPopover extends Component {
 
   _onSubmit() {
     let value = this._inputRef ? this._inputRef.value : '';
-    this.props.onSubmit(value, this.state.checkOptionValues);
+    let altValue = this._altRef ? this._altRef.value : undefined;
+    this.props.onSubmit(value, this.state.checkOptionValues, { altValue });
   }
 
   _onDocumentClick(event: Object) {

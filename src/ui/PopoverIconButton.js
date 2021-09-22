@@ -12,6 +12,7 @@ type Props = {
   checkOptions?: {
     [key: string]: { label: string, defaultValue: boolean };
   };
+  options?: Object;
   onTogglePopover: Function,
   onSubmit: Function;
 };
@@ -25,7 +26,7 @@ export default class PopoverIconButton extends Component {
   }
 
   render() {
-    let {onTogglePopover, showPopover, checkOptions, ...props} = this.props; // eslint-disable-line no-unused-vars
+    let {onTogglePopover, showPopover, checkOptions, options, ...props} = this.props; // eslint-disable-line no-unused-vars
     return (
       <IconButton {...props} onClick={onTogglePopover}>
         {this._renderPopover()}
@@ -41,6 +42,7 @@ export default class PopoverIconButton extends Component {
       <InputPopover
         defaultValue={this.props.defaultValue}
         checkOptions={this.props.checkOptions}
+        options={this.props.options}
         onSubmit={this._onSubmit}
         onCancel={this._hidePopover}
       />
